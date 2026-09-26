@@ -1,121 +1,137 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
 
+const members = [
+  {
+    name: 'Pierre Le Gall',
+    instrument: 'Accordéoniste',
+    image:
+      'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=800&q=85',
+    alt: 'Musicien jouant de la guitare',
+  },
+  {
+    name: 'Maëlle Kerouac’h',
+    instrument: 'Violoniste',
+    image:
+      'https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=800&q=85',
+    alt: 'Musicienne chantant dans un micro',
+  },
+  {
+    name: 'Yannick Le Breton',
+    instrument: 'Bombardier',
+    image:
+      'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=85',
+    alt: 'Musicien sur scène',
+  },
+  {
+    name: 'Lucas Morvan',
+    instrument: 'Guitariste',
+    image:
+      'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=800&q=85',
+    alt: 'Concert en plein air',
+  },
+  {
+    name: 'Élise Danion',
+    instrument: 'Percussionniste',
+    image:
+      'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=800&q=85',
+    alt: 'Public réuni autour de la musique',
+  },
+  {
+    name: 'Hugo Kervadec',
+    instrument: 'Soubassophoniste',
+    image:
+      'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=85',
+    alt: 'Musicien dans un studio de musique',
+  },
+]
+
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="site-shell" id="accueil">
+      <header className="site-header">
+        <div className="brand-rails" aria-hidden="true">
+          <span />
+          <span />
+          <span />
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+        <a className="brand-mark" href="#accueil" aria-label="Les Impro-Bables, accueil">
+          <span className="brand-stars" aria-hidden="true">✦ · ✦</span>
+          <span className="brand-name">Les<br />Impro-Bables</span>
+          <span className="brand-instruments" aria-hidden="true">♫</span>
+          <span className="brand-ribbon">Jouez ensemble, vivez ensemble</span>
+        </a>
+        <nav className="main-nav" aria-label="Navigation principale">
+          <a className="active" href="#accueil">Accueil</a>
+          <a href="#apropos">À propos</a>
+          <a href="#membres">Membres</a>
+          <a href="#photos">Photos</a>
+          <a href="#contact">Contactez-nous</a>
+        </nav>
+      </header>
 
-      <div className="ticks"></div>
+      <main>
+        <section className="hero-section" id="apropos">
+          <div className="hero-decoration hero-decoration-left" aria-hidden="true">♫</div>
+          <div className="hero-decoration hero-decoration-right" aria-hidden="true">♪</div>
+          <div className="hero-content">
+            <p className="eyebrow">Musique vivante · Bretagne</p>
+            <h1>Les Impro-Bables</h1>
+            <p className="hero-script">Jouez ensemble, vivez ensemble !</p>
+            <div className="star-divider" aria-hidden="true"><span />★<span /></div>
+            <p className="hero-copy">
+              Un groupe de musiciens passionnés qui partagent<br className="desktop-break" />
+              la scène et la bonne humeur.
+            </p>
+            <a className="hero-button" href="#membres">
+              Découvrir le groupe <span aria-hidden="true">⚓</span>
+            </a>
+          </div>
+        </section>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <section className="members-section" id="membres" aria-labelledby="members-title">
+          <div className="section-heading" id="photos">
+            <span aria-hidden="true" />
+            <span className="heading-star" aria-hidden="true">★</span>
+            <h2 id="members-title">Nos membres</h2>
+            <span className="heading-star" aria-hidden="true">★</span>
+            <span aria-hidden="true" />
+          </div>
+          <div className="member-grid">
+            {members.map((member) => (
+              <article className="member-card" key={member.name}>
+                <img src={member.image} alt={member.alt} loading="lazy" />
+                <div className="member-details">
+                  <h3>{member.name}</h3>
+                  <div className="mini-divider" aria-hidden="true"><span />★<span /></div>
+                  <p>{member.instrument}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      </main>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <footer className="site-footer" id="contact">
+        <div className="footer-inner">
+          <div className="footer-social">
+            <p>Suivez-nous</p>
+            <div className="social-links">
+              <a href="https://www.facebook.com/" aria-label="Facebook">f</a>
+              <a href="https://www.instagram.com/" aria-label="Instagram">◎</a>
+            </div>
+          </div>
+          <div className="footer-brand">
+            <span className="footer-anchor" aria-hidden="true">⚓</span>
+            <p>Les Impro-Bables</p>
+            <div className="footer-star" aria-hidden="true"><span />★<span /></div>
+          </div>
+          <div className="footer-legal">
+            <p>Les Impro-Bables © 2024</p>
+            <p>Tous droits réservés</p>
+          </div>
+        </div>
+      </footer>
+    </div>
   )
 }
 
