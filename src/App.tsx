@@ -55,10 +55,7 @@ function App() {
           <span />
         </div>
         <a className="brand-mark" href="#accueil" aria-label="Les Impro-Bables, accueil">
-          <span className="brand-stars" aria-hidden="true">✦ · ✦</span>
-          <span className="brand-name">Les<br />Impro-Bables</span>
-          <span className="brand-instruments" aria-hidden="true">♫</span>
-          <span className="brand-ribbon">Jouez ensemble, vivez ensemble</span>
+          <img className="brand-image" src="/logo.jpeg" alt="Logo des Impro-Bables" />
         </a>
         <nav className="main-nav" aria-label="Navigation principale">
           <a className="active" href="#accueil">Accueil</a>
