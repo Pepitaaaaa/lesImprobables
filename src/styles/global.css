@@ -50,14 +50,3 @@ a:focus-visible {
 img {
   max-width: 100%;
 }
-
-/* Transition douce entre l'accueil et la page contact ; l'en-tête reste en place. */
-@media (prefers-reduced-motion: no-preference) {
-  @view-transition {
-    navigation: auto;
-  }
-
-  .site-header {
-    view-transition-name: site-header;
-  }
-}
