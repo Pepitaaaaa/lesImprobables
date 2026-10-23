@@ -1,10 +1,10 @@
 :root {
-  --paper: #fbf8f2;
-  --navy: #102f4d;
-  --red: #c92735;
-  --sans: 'DM Sans', sans-serif;
-  --serif: 'Cormorant Garamond', Georgia, serif;
-  --script: 'Caveat', cursive;
+  --paper: #f8f3ec;
+  --navy: #0f2747;
+  --red: #c8222f;
+  --sans: 'Inter', system-ui, sans-serif;
+  --serif: 'Playfair Display', Georgia, serif;
+  --script: 'Dancing Script', cursive;
 
   color: var(--navy);
   background: var(--paper);
