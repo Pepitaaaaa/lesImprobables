@@ -114,7 +114,7 @@ function App() {
           <span />
         </div>
         <a className="brand-mark" href="#accueil" aria-label="Les Impro-Bables, accueil">
-          <img className="brand-image" src="/logo.jpeg" alt="Logo des Impro-Bables" />
+          <img className="brand-image" src="/logo-v2.png" alt="Logo des Impro-Bables" />
         </a>
         <nav className="main-nav" aria-label="Navigation principale">
           <a className="active" href="#accueil" aria-current="page">Accueil</a>

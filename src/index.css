@@ -1,12 +1,15 @@
 :root {
-  --paper: #f8f3ec;
-  --navy: #0f2747;
-  --red: #c8222f;
+  --paper: #f2f8fe;
+  --line: #d6e6f5;
+  --deep: #043890;
+  --sky: #38b6ff;
+  --mid: #0a6fc2;
+  --night: #022466;
   --sans: 'Inter', system-ui, sans-serif;
   --serif: 'Playfair Display', Georgia, serif;
   --script: 'Dancing Script', cursive;
 
-  color: var(--navy);
+  color: var(--deep);
   background: var(--paper);
   font-family: var(--sans);
   font-synthesis: none;
@@ -38,7 +41,7 @@ a {
 }
 
 a:focus-visible {
-  outline: 2px solid var(--red);
+  outline: 2px solid var(--mid);
   outline-offset: 4px;
 }
 
