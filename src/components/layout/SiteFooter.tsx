@@ -1,6 +1,8 @@
+import type { PageId } from '../../config/navigation'
+import { pageHref } from '../../lib/links'
 import { AnchorIcon, StarDivider } from '../ui/Decorations'
 
-export function SiteFooter() {
+export function SiteFooter({ current }: { current: PageId }) {
   return (
     <footer className="site-footer">
       <svg className="footer-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
@@ -31,8 +33,13 @@ export function SiteFooter() {
           <StarDivider className="footer-star" />
         </div>
         <div className="footer-legal">
-          <p>Les Impro-Bables © 2024</p>
+          <p>Les Impro-Bables © {new Date().getFullYear()}</p>
           <p>Tous droits réservés</p>
+          <p className="footer-links">
+            <a href={pageHref(current, 'mentions-legales')}>Mentions légales</a>
+            <span aria-hidden="true"> · </span>
+            <a href={pageHref(current, 'confidentialite')}>Confidentialité</a>
+          </p>
         </div>
       </div>
     </footer>

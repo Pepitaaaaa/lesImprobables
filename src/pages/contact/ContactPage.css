@@ -1,7 +1,3 @@
-.page-hero {
-  min-height: 290px;
-}
-
 .contact-section {
   position: relative;
   z-index: 1;
@@ -134,19 +130,6 @@
   }
 }
 
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.contact-section .back-link {
   margin: 0 0 16px 4px;
-  color: var(--mid);
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 160ms ease, gap 160ms ease;
-}
-
-.back-link:hover {
-  gap: 12px;
-  color: var(--deep);
 }

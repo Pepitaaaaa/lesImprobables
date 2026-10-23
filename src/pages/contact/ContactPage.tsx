@@ -1,7 +1,8 @@
 import { useState, type FormEvent } from 'react'
+import { PageHero } from '../../components/layout/PageHero'
 import { SiteFooter } from '../../components/layout/SiteFooter'
 import { SiteHeader } from '../../components/layout/SiteHeader'
-import { HeroWave, NotesLeft, NotesRight, StarDivider, Waves } from '../../components/ui/Decorations'
+import { BackLink } from '../../components/ui/BackLink'
 import { FORMSPARK_FORM_ID, FORMSPARK_URL } from '../../config/formspark'
 import { pageHref } from '../../lib/links'
 import './ContactPage.css'
@@ -43,26 +44,13 @@ function ContactPage() {
       <SiteHeader current="contact" />
 
       <main>
-        <section className="hero-section page-hero">
-          <NotesLeft />
-          <NotesRight />
-          <Waves />
-          <div className="hero-content">
-            <h1>Contactez-nous</h1>
-            <p className="hero-script">Une question, un concert, une envie de jouer ?</p>
-            <StarDivider className="star-divider" />
-            <p className="hero-copy">
-              Écrivez-nous, nous vous répondrons<br className="desktop-break" />{' '}
-              dans les meilleurs délais.
-            </p>
-          </div>
-          <HeroWave />
-        </section>
+        <PageHero title="Contactez-nous" script="Une question, un concert, une envie de jouer ?">
+          Écrivez-nous, nous vous répondrons<br className="desktop-break" />{' '}
+          dans les meilleurs délais.
+        </PageHero>
 
         <section className="contact-section" aria-label="Formulaire de contact">
-          <a className="back-link" href={pageHref('contact', 'accueil')}>
-            <span aria-hidden="true">←</span> Retour à l’accueil
-          </a>
+          <BackLink href={pageHref('contact', 'accueil')} label="Retour à l’accueil" />
           <form className="contact-card" onSubmit={handleSubmit}>
             <div className="contact-row">
               <div className="contact-field">
@@ -97,7 +85,8 @@ function ContactPage() {
               Les informations saisies servent uniquement à répondre à votre demande. Elles sont transmises par
               e-mail à l’association via notre prestataire Formspark (données hébergées dans l’Union européenne)
               et ne sont ni revendues ni utilisées à des fins commerciales. Vous pouvez demander leur suppression
-              à tout moment en nous écrivant.
+              à tout moment en nous écrivant. En savoir plus :{' '}
+              <a href={pageHref('contact', 'confidentialite')}>politique de confidentialité</a>.
             </p>
 
             <div className="contact-actions">
@@ -118,7 +107,7 @@ function ContactPage() {
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter current="contact" />
     </div>
   )
 }

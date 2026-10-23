@@ -23,22 +23,26 @@ src/
 │   ├── main.tsx
 │   ├── HomePage.tsx
 │   ├── HomePage.css
-│   └── contact/            → /contact/
-│       ├── index.html      titre et description de la page
-│       ├── main.tsx        point d'entrée (2 lignes)
-│       ├── ContactPage.tsx contenu de la page
-│       └── ContactPage.css styles propres à la page
+│   ├── contact/            → /contact/
+│   │   ├── index.html      titre et description de la page
+│   │   ├── main.tsx        point d'entrée (2 lignes)
+│   │   ├── ContactPage.tsx contenu de la page
+│   │   └── ContactPage.css styles propres à la page
+│   ├── mentions-legales/   → /mentions-legales/
+│   └── confidentialite/    → /confidentialite/
 ├── components/
 │   ├── layout/             En-tête et pied de page, communs à toutes les pages
 │   └── ui/                 Petits éléments réutilisables (étoiles, notes, vagues, icônes)
 ├── config/
 │   ├── navigation.ts       Liste des pages et menu principal
+│   ├── legal.ts            Infos légales de l'asso (mentions légales, confidentialité)
 │   └── formspark.ts        Identifiant du formulaire de contact
 ├── data/                   Contenus (membres…)
 ├── lib/                    Fonctions utilitaires (démarrage d'une page, liens)
 ├── styles/
 │   ├── global.css          Couleurs de la charte, polices, réglages de base
 │   ├── layout.css          Styles partagés : en-tête, bandeau, titres, pied de page
+│   ├── animations.css      Animations discrètes (notes, vagues, apparitions)
 │   └── fonts.css           Déclaration des polices hébergées sur le site
 └── assets/                 Polices et images traitées par Vite
 docs/design/                Maquettes et logos sources (non publiés sur le site)
@@ -72,6 +76,12 @@ Les couleurs sont des variables CSS définies dans `src/styles/global.css` :
 | `--paper` | `#f2f8fe` | Fond glacier de l'en-tête |
 
 Polices : Playfair Display (titres), Dancing Script (phrases manuscrites), Inter (texte).
+
+## Mentions légales et confidentialité
+
+Les informations de l'association (RNA, adresse, téléphone, responsable de publication, hébergeur)
+se remplissent dans `src/config/legal.ts`. Tant qu'une valeur commence par « À COMPLÉTER », elle est
+surlignée en jaune sur le site.
 
 ## Formulaire de contact
 

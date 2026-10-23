@@ -1,0 +1,142 @@
+/* Animations discrètes du site.
+   - Uniquement `translate`, `rotate`, `scale` et `opacity` : fluides, sans recalcul de la mise en page,
+     et sans écraser les `transform` déjà utilisés (rotation des notes, effets de survol).
+   - Tout est désactivé si le visiteur a demandé à réduire les animations dans son système. */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Notes de musique qui flottent, chacune à son rythme */
+  .hero-notes-left {
+    animation: note-float 7s ease-in-out infinite;
+  }
+
+  .hero-notes-right {
+    animation: note-float 5.5s ease-in-out -2s infinite reverse;
+  }
+
+  @keyframes note-float {
+    0%,
+    100% {
+      translate: 0 0;
+      rotate: 0deg;
+    }
+
+    50% {
+      translate: 0 -14px;
+      rotate: 5deg;
+    }
+  }
+
+  /* Vagues qui ondulent lentement */
+  .hero-waves {
+    animation: wave-drift 9s ease-in-out infinite alternate;
+  }
+
+  @keyframes wave-drift {
+    from {
+      translate: 0 0;
+    }
+
+    to {
+      translate: -24px 4px;
+    }
+  }
+
+  /* Arrivée du contenu du bandeau, élément par élément */
+  .hero-content > * {
+    animation: rise-in 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .hero-content > :nth-child(2) {
+    animation-delay: 100ms;
+  }
+
+  .hero-content > :nth-child(3) {
+    animation-delay: 200ms;
+  }
+
+  .hero-content > :nth-child(4) {
+    animation-delay: 300ms;
+  }
+
+  .hero-content > :nth-child(5) {
+    animation-delay: 400ms;
+  }
+
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      translate: 0 16px;
+    }
+  }
+
+  /* Étoiles qui scintillent doucement */
+  .star-divider svg,
+  .heading-star,
+  .footer-star svg {
+    animation: twinkle 3.5s ease-in-out infinite;
+  }
+
+  .heading-star:last-of-type {
+    animation-delay: -1.75s;
+  }
+
+  @keyframes twinkle {
+    0%,
+    100% {
+      scale: 1;
+      rotate: 0deg;
+    }
+
+    50% {
+      scale: 1.18;
+      rotate: 36deg;
+    }
+  }
+
+  /* Ancre du pied de page qui tangue comme un bateau */
+  .footer-anchor {
+    transform-origin: 50% 15%;
+    animation: sway 4.5s ease-in-out infinite;
+  }
+
+  /* Ancre du bouton qui se balance au survol */
+  .hero-button-icon {
+    transform-origin: 50% 15%;
+  }
+
+  .hero-button:hover .hero-button-icon {
+    animation: sway 1.2s ease-in-out infinite;
+  }
+
+  @keyframes sway {
+    0%,
+    100% {
+      rotate: -8deg;
+    }
+
+    50% {
+      rotate: 8deg;
+    }
+  }
+
+  /* Cartes qui apparaissent au défilement (Chrome, Edge, Safari récents ; ailleurs elles sont simplement visibles) */
+  @supports (animation-timeline: view()) {
+    .member-card,
+    .contact-card,
+    .legal-card {
+      animation: reveal linear both;
+      animation-timeline: view();
+      /* L'effet se termine dès que 180px de la carte sont visibles, quelle que soit sa hauteur :
+         une grande carte (formulaire, pages légales) ne reste pas transparente pendant la lecture. */
+      animation-range: entry 0px entry 180px;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        translate: 0 28px;
+        scale: 0.97;
+      }
+    }
+  }
+}

@@ -48,7 +48,7 @@ function HomePage() {
         </section>
       </main>
 
-      <SiteFooter />
+      <SiteFooter current="accueil" />
     </div>
   )
 }

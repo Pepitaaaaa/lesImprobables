@@ -3,6 +3,8 @@
 export const pages = {
   accueil: { path: '' },
   contact: { path: 'contact/' },
+  'mentions-legales': { path: 'mentions-legales/' },
+  confidentialite: { path: 'confidentialite/' },
 } as const
 
 export type PageId = keyof typeof pages

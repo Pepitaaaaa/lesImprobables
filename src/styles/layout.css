@@ -1,6 +1,8 @@
 .site-shell {
   min-height: 100vh;
-  overflow: hidden;
+  /* clip (et non hidden) : coupe les débordements sans créer de conteneur de défilement,
+     ce qui permet aux animations liées au défilement de suivre la page. */
+  overflow: clip;
   background: #fff;
 }
 
@@ -94,8 +96,10 @@
 .hero-section {
   position: relative;
   display: grid;
-  min-height: 345px;
-  place-items: center;
+  /* Hauteur commune à toutes les pages et contenu calé en haut :
+     titre, notes et vagues sont exactement au même endroit d'une page à l'autre. */
+  min-height: 387px;
+  place-items: start center;
   padding: 36px 20px 70px;
   background:
   radial-gradient(ellipse at 50% 40%, #fafcff 0%, var(--paper) 70%);
@@ -211,7 +215,7 @@
 }
 
 .hero-notes-left {
-  bottom: 80px;
+  top: 145px;
   left: 7%;
   width: 130px;
   transform: rotate(-10deg);
@@ -409,6 +413,7 @@
 
 @media (max-width: 900px) {
   .hero-notes-left {
+    top: 182px;
     left: 2%;
     width: 100px;
   }
@@ -459,6 +464,7 @@
   }
 
   .hero-section {
+    min-height: 345px;
     padding: 30px 16px 64px;
   }
 
@@ -471,7 +477,7 @@
   }
 
   .hero-notes-left {
-    bottom: 80px;
+    top: 170px;
     left: -20px;
     width: 76px;
   }
@@ -527,4 +533,52 @@
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Bandeau des pages intérieures (composant PageHero) */
+
+.page-hero-compact h1 {
+  font-size: clamp(32px, 4.6vw, 52px);
+}
+
+/* Liens légaux du pied de page */
+
+.footer-links {
+  margin-top: 8px !important;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: #38b6ff80;
+  text-underline-offset: 3px;
+  transition: color 160ms ease;
+}
+
+.footer-links a:hover {
+  color: var(--sky);
+}
+
+/* Lien « retour » (composant BackLink) */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--mid);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 160ms ease, gap 160ms ease;
+}
+
+.back-link:hover {
+  gap: 12px;
+  color: var(--deep);
+}
+
+.back-link-arrow {
+  width: 18px;
+  height: 18px;
+  flex: none;
 }
