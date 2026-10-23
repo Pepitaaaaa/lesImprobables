@@ -2,7 +2,6 @@ import { useState, type FormEvent } from 'react'
 import { PageHero } from '../../components/layout/PageHero'
 import { SiteFooter } from '../../components/layout/SiteFooter'
 import { SiteHeader } from '../../components/layout/SiteHeader'
-import { BackLink } from '../../components/ui/BackLink'
 import { FORMSPARK_FORM_ID, FORMSPARK_URL } from '../../config/formspark'
 import { pageHref } from '../../lib/links'
 import './ContactPage.css'
@@ -50,7 +49,6 @@ function ContactPage() {
         </PageHero>
 
         <section className="contact-section" aria-label="Formulaire de contact">
-          <BackLink href={pageHref('contact', 'accueil')} label="Retour à l’accueil" />
           <form className="contact-card" onSubmit={handleSubmit}>
             <div className="contact-row">
               <div className="contact-field">
