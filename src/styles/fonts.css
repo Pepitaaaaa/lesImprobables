@@ -1,0 +1,26 @@
+/* Polices hébergées sur le site (licence SIL Open Font License) : aucune requête vers Google Fonts.
+   Polices variables : un seul fichier couvre toutes les graisses utilisées. */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../assets/fonts/inter-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+  src: url('../assets/fonts/playfair-display-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-weight: 500 600;
+  font-display: swap;
+  src: url('../assets/fonts/dancing-script-latin.woff2') format('woff2');
+}

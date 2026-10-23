@@ -1,75 +1,79 @@
-# React + TypeScript + Vite
+# Les Impro-Bables — site web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site de l'association Les Impro-Bables, construit avec React, TypeScript et Vite.
+Le site est 100 % statique : `npm run build` produit un dossier `dist/` à déposer chez n'importe quel hébergeur.
 
-Currently, two official plugins are available:
+## Commandes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Commande | Rôle |
+|---|---|
+| `npm install` | Installe les dépendances (une seule fois) |
+| `npm run dev` | Lance le site en local avec rechargement automatique |
+| `npm run build` | Vérifie les types puis génère le site final dans `dist/` |
+| `npm run preview` | Affiche le site final (`dist/`) en local, à la vitesse réelle |
+| `npm run lint` | Vérifie la qualité du code |
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Organisation
 
 ```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+public/                     Fichiers copiés tels quels (favicon, icône iPhone)
+src/
+├── pages/                  UNE PAGE = UN DOSSIER (le dossier donne l'URL)
+│   ├── index.html          → /            (accueil)
+│   ├── main.tsx
+│   ├── HomePage.tsx
+│   ├── HomePage.css
+│   └── contact/            → /contact/
+│       ├── index.html      titre et description de la page
+│       ├── main.tsx        point d'entrée (2 lignes)
+│       ├── ContactPage.tsx contenu de la page
+│       └── ContactPage.css styles propres à la page
+├── components/
+│   ├── layout/             En-tête et pied de page, communs à toutes les pages
+│   └── ui/                 Petits éléments réutilisables (étoiles, notes, vagues, icônes)
+├── config/
+│   ├── navigation.ts       Liste des pages et menu principal
+│   └── formspark.ts        Identifiant du formulaire de contact
+├── data/                   Contenus (membres…)
+├── lib/                    Fonctions utilitaires (démarrage d'une page, liens)
+├── styles/
+│   ├── global.css          Couleurs de la charte, polices, réglages de base
+│   ├── layout.css          Styles partagés : en-tête, bandeau, titres, pied de page
+│   └── fonts.css           Déclaration des polices hébergées sur le site
+└── assets/                 Polices et images traitées par Vite
+docs/design/                Maquettes et logos sources (non publiés sur le site)
 ```
+
+## Ajouter une page
+
+Exemple avec une page « Concerts » accessible à l'adresse `/concerts/` :
+
+1. Créer le dossier `src/pages/concerts/` en copiant `src/pages/contact/`.
+2. Dans `index.html` : changer le `<title>` et la `description`.
+3. Renommer `ContactPage.tsx` / `.css` en `ConcertsPage.tsx` / `.css` et adapter le contenu
+   (garder `<SiteHeader current="concerts" />` et `<SiteFooter />`).
+4. Dans `main.tsx` : importer `ConcertsPage`.
+5. Dans `src/config/navigation.ts` : ajouter `concerts: { path: 'concerts/' }` dans `pages`,
+   et une entrée dans `mainNav` si la page doit apparaître dans le menu.
+
+Vite détecte automatiquement chaque `index.html` placé dans `src/pages/` : rien d'autre à configurer.
+Les balises communes (favicon, couleur du thème, préchargement des polices et des pages) sont ajoutées
+automatiquement dans chaque page par `vite.config.ts`.
+
+## Charte graphique
+
+Les couleurs sont des variables CSS définies dans `src/styles/global.css` :
+
+| Variable | Couleur | Usage |
+|---|---|---|
+| `--deep` | `#043890` | Bleu profond : titres, menu, pied de page |
+| `--sky` | `#38b6ff` | Bleu ciel : bouton, étoiles, décors |
+| `--mid` | `#0a6fc2` | Bleu moyen : textes secondaires, liens actifs |
+| `--paper` | `#f2f8fe` | Fond glacier de l'en-tête |
+
+Polices : Playfair Display (titres), Dancing Script (phrases manuscrites), Inter (texte).
+
+## Formulaire de contact
+
+Les messages sont envoyés par [Formspark](https://formspark.io) (données hébergées dans l'UE).
+Renseigner l'identifiant du formulaire dans `src/config/formspark.ts`.
