@@ -564,21 +564,22 @@
 .back-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   color: var(--mid);
-  font-size: 14px;
-  font-weight: 600;
   text-decoration: none;
-  transition: color 160ms ease, gap 160ms ease;
+  transition: color 160ms ease;
 }
 
 .back-link:hover {
-  gap: 12px;
   color: var(--deep);
 }
 
 .back-link-arrow {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   flex: none;
+  transition: transform 160ms ease;
+}
+
+.back-link:hover .back-link-arrow {
+  transform: translateX(-4px);
 }

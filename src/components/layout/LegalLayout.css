@@ -119,12 +119,14 @@
 }
 
 .legal-back {
-  padding: 8px 16px 8px 12px;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
   border: 1.5px solid var(--line);
   border-radius: 999px;
   background: #fff;
   box-shadow: 0 2px 6px #04389014;
-  transition: color 160ms ease, gap 160ms ease, border-color 160ms ease;
+  transition: color 160ms ease, border-color 160ms ease;
 }
 
 .legal-back:hover {
